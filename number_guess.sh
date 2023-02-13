@@ -1,6 +1,16 @@
 #!/bin/bash
 
-# Randomly generate number for user to guess between 1 and 1000
+# Declare constants
+MAX_VALUE=1000
+
+
+# Generate random number between 1 and $1 arg
+function _generateRandomInt() {
+
+  local randomInt=($RANDOM % $1)+1
+  echo "$randomInt"
+
+}
 
 # Ask user to enter username
   # If not able to find in DB, indicate that it is user's first time
@@ -18,5 +28,11 @@
 
   # Increment counter or print end message, then update stats in DB
 
+function _main() {
 
-function main
+  echo "$(_generateRandomInt $MAX_VALUE)"
+
+}
+
+
+_main
