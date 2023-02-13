@@ -7,8 +7,8 @@ MAX_VALUE=1000
 # Generate random number between 1 and $1 arg
 function _generateRandomInt() {
 
-  local randomInt=($RANDOM % $1)+1
-  echo "$randomInt"
+  local randomInt=$[ $RANDOM % $1 + 1]
+  echo $randomInt
 
 }
 
@@ -30,7 +30,8 @@ function _generateRandomInt() {
 
 function _main() {
 
-  echo "$(_generateRandomInt $MAX_VALUE)"
+  randomInt=$(_generateRandomInt $MAX_VALUE)
+  echo $randomInt
 
 }
 
