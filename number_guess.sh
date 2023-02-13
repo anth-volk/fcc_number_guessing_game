@@ -2,13 +2,18 @@
 
 # Declare constants
 MAX_VALUE=1000
-
+PSQL="psql --username=freecodecamp --dbname=<database_name> -t --no-align -c"
 
 # Generate random number between 1 and $1 arg
 function _generateRandomInt() {
-
   local randomInt=$[ $RANDOM % $1 + 1]
   echo $randomInt
+}
+
+# Authentication function, where $1 is username
+function _authenticateUser() {
+  local authOutput=$($PSQL "SELECT user_id FROM 
+
 
 }
 
@@ -30,8 +35,13 @@ function _generateRandomInt() {
 
 function _main() {
 
+  # Generate random integer between 1 and MAX_VALUE
   randomInt=$(_generateRandomInt $MAX_VALUE)
-  echo $randomInt
+
+  # Ask user to enter username and authenticate
+  echo "Enter your username:"
+  read username
+  echo $(_authenticateUser $username)
 
 }
 
